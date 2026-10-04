@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Suryansh Singh",
+    "age": 22,
+    "department": "IT",
+    "position": "Software Engineer",
+    "salary": 55000,
+    "city": "Noida"
+  },
+  {
+    "id": 2,
+    "name": "Rahul Sharma",
+    "age": 24,
+    "department": "HR",
+    "position": "HR Executive",
+    "salary": 45000,
+    "city": "Delhi"
+  },
+  {
+    "id": 3,
+    "name": "Priya Verma",
+    "age": 23,
+    "department": "Finance",
+    "position": "Financial Analyst",
+    "salary": 60000,
+    "city": "Gurugram"
+  },
+  {
+    "id": 4,
+    "name": "Amit Kumar",
+    "age": 25,
+    "department": "IT",
+    "position": "Backend Developer",
+    "salary": 65000,
+    "city": "Bengaluru"
+  },
+  {
+    "id": 5,
+    "name": "Neha Gupta",
+    "age": 26,
+    "department": "Marketing",
+    "position": "Marketing Executive",
+    "salary": 48000,
+    "city": "Mumbai"
+  },
+  {
+    "id": 6,
+    "name": "Rohit Singh",
+    "age": 27,
+    "department": "IT",
+    "position": "DevOps Engineer",
+    "salary": 75000,
+    "city": "Pune"
+  },
+  {
+    "id": 7,
+    "name": "Anjali Mehta",
+    "age": 24,
+    "department": "Sales",
+    "position": "Sales Executive",
+    "salary": 42000,
+    "city": "Noida"
+  },
+  {
+    "id": 8,
+    "name": "Vikas Yadav",
+    "age": 28,
+    "department": "IT",
+    "position": "Senior Software Engineer",
+    "salary": 90000,
+    "city": "Hyderabad"
+  },
+  {
+    "id": 9,
+    "name": "Sneha Agarwal",
+    "age": 25,
+    "department": "Finance",
+    "position": "Accountant",
+    "salary": 52000,
+    "city": "Jaipur"
+  },
+  {
+    "id": 10,
+    "name": "Arjun Malhotra",
+    "age": 29,
+    "department": "IT",
+    "position": "System Administrator",
+    "salary": 70000,
+    "city": "Delhi"
+  },
+  {
+    "id": 11,
+    "name": "Kavya Sharma",
+    "age": 23,
+    "department": "HR",
+    "position": "Recruiter",
+    "salary": 40000,
+    "city": "Lucknow"
+  },
+  {
+    "id": 12,
+    "name": "Manish Tiwari",
+    "age": 30,
+    "department": "IT",
+    "position": "Cloud Engineer",
+    "salary": 85000,
+    "city": "Bengaluru"
+  },
+  {
+    "id": 13,
+    "name": "Pooja Singh",
+    "age": 26,
+    "department": "Marketing",
+    "position": "Digital Marketing Specialist",
+    "salary": 58000,
+    "city": "Mumbai"
+  },
+  {
+    "id": 14,
+    "name": "Karan Patel",
+    "age": 27,
+    "department": "Sales",
+    "position": "Business Development Executive",
+    "salary": 50000,
+    "city": "Ahmedabad"
+  },
+  {
+    "id": 15,
+    "name": "Simran Kaur",
+    "age": 24,
+    "department": "IT",
+    "position": "Frontend Developer",
+    "salary": 62000,
+    "city": "Chandigarh"
+  },
+  {
+    "id": 16,
+    "name": "Akash Mishra",
+    "age": 31,
+    "department": "IT",
+    "position": "Technical Lead",
+    "salary": 110000,
+    "city": "Hyderabad"
+  },
+  {
+    "id": 17,
+    "name": "Riya Kapoor",
+    "age": 25,
+    "department": "Finance",
+    "position": "Finance Executive",
+    "salary": 55000,
+    "city": "Gurugram"
+  },
+  {
+    "id": 18,
+    "name": "Nitin Joshi",
+    "age": 29,
+    "department": "IT",
+    "position": "Database Administrator",
+    "salary": 80000,
+    "city": "Pune"
+  },
+  {
+    "id": 19,
+    "name": "Isha Roy",
+    "age": 23,
+    "department": "HR",
+    "position": "HR Coordinator",
+    "salary": 43000,
+    "city": "Kolkata"
+  },
+  {
+    "id": 20,
+    "name": "Varun Saxena",
+    "age": 28,
+    "department": "IT",
+    "position": "SRE Engineer",
+    "salary": 95000,
+    "city": "Noida"
+  }
+]
