@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 app.get("/employees",async(req,res)=>{
      try{
         const [employees]=await db.query("Select * from employees")
+        
         res.json(employees)
      }
     catch(error){
