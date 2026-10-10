@@ -1,197 +1,257 @@
+import employeeRoutes from "./router.js";
 import express from "express"
-import employees from "./employees.json" with { type: "json" };
-import db from "./config/db.js";
-const app=express();
-const port=8000;
-app.use(express.json())
 
-db.query("SELECT 1")
-    .then(() => {
-        console.log("MySQL connected successfully");
-    })
-    .catch((error) => {
-        console.log("MySQL connection failed");
-        console.log(error.message);
-    });
+const app = express();
+const port = 8000;
 
-app.get("/", (req, res) => {
-    res.send("Employee MySQL API is working");
+// Middleware to parse incoming JSON
+app.use(express.json());
+
+// Register employee routes
+app.use(employeeRoutes);
+
+// Start server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
-app.get("/employees",async(req,res)=>{
-     try{
-        const [employees]=await db.query("Select * from employees")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import express from "express"
+// import employees from "./employees.json" with { type: "json" };
+// import db from "./config/db.js";
+// const app=express();
+// const port=8000;
+// app.use(express.json())
+
+// db.query("SELECT 1")
+//     .then(() => {
+//         console.log("MySQL connected successfully");
+//     })
+//     .catch((error) => {
+//         console.log("MySQL connection failed");
+//         console.log(error.message);
+//     });
+
+// app.get("/", (req, res) => {
+//     res.send("Employee MySQL API is working");
+// });
+
+// app.get("/employees",async(req,res)=>{
+//      try{
+//         const [employees]=await db.query("Select * from employees")
         
-        res.json(employees)
-     }
-    catch(error){
-       res.status(500).json({
-        message:"Failed to fetch employees",
-        error:error.message
-       })
-    }
-})
+//         res.json(employees)
+//      }
+//     catch(error){
+//        res.status(500).json({
+//         message:"Failed to fetch employees",
+//         error:error.message
+//        })
+//     }
+// })
 
-app.get("/employees/:id",async(req,res)=>{
-    try{
-       const id=req.params.id
-       const [employees]=await db.query("select * from employees where id=?", [id])
-       if(employees.length==0){
-        return res.status(404).json({
-            message:"Employee not found"
-        })
-       }
-       res.json(employees[0])
-    }
-    catch(error){
-           res.status(500).json({
-            message: "Failed to fetch employee",
-            error: error.message
-        });
-    }
-})
+// app.get("/employees/:id",async(req,res)=>{
+//     try{
+//        const id=req.params.id
+//        const [employees]=await db.query("select * from employees where id=?", [id])
+//        if(employees.length==0){
+//         return res.status(404).json({
+//             message:"Employee not found"
+//         })
+//        }
+//        res.json(employees[0])
+//     }
+//     catch(error){
+//            res.status(500).json({
+//             message: "Failed to fetch employee",
+//             error: error.message
+//         });
+//     }
+// })
 
-app.post("/employees",async(req,res)=>{
-    try{
-    const { name, email, gender, department, address, salary }=req.body
-       const [result] = await db.query(
-            `INSERT INTO employees 
-            (name, email, gender, department, address, salary)
-            VALUES (?, ?, ?, ?, ?, ?)`,
-            [name, email, gender, department, address, salary]
-        );
-         res.status(201).json({
-            message: "Employee created successfully",
-            employeeId: result.insertId
-        });
+// app.post("/employees",async(req,res)=>{
+//     try{
+//     const { name, email, gender, department, address, salary }=req.body
+//        const [result] = await db.query(
+//             `INSERT INTO employees 
+//             (name, email, gender, department, address, salary)
+//             VALUES (?, ?, ?, ?, ?, ?)`,
+//             [name, email, gender, department, address, salary]
+//         );
+//          res.status(201).json({
+//             message: "Employee created successfully",
+//             employeeId: result.insertId
+//         });
 
         
 
-}catch(error){
-     res.status(500).json({
-            message: "Failed to create employee",
-            error: error.message
-        });
-}
-})
+// }catch(error){
+//      res.status(500).json({
+//             message: "Failed to create employee",
+//             error: error.message
+//         });
+// }
+// })
 
-app.put("/employees/:id",async(req,res)=>{
-    try{
-        const id=req.params.id
-        const { name, email, gender, department, address, salary }=req.body
-        const [result]=await db.query(`UPDATE EMPLOYEES SET 
-            name=?,email=?,gender=?,department=?,address=?,salary=? where id=?`,
-           [name, email, gender, department, address, salary,id] )
+// app.put("/employees/:id",async(req,res)=>{
+//     try{
+//         const id=req.params.id
+//         const { name, email, gender, department, address, salary }=req.body
+//         const [result]=await db.query(`UPDATE EMPLOYEES SET 
+//             name=?,email=?,gender=?,department=?,address=?,salary=? where id=?`,
+//            [name, email, gender, department, address, salary,id] )
 
-        if(result.affectedRows==0){
-             return res.status(404).json({
-                message: "Employee not found"
-            });
+//         if(result.affectedRows==0){
+//              return res.status(404).json({
+//                 message: "Employee not found"
+//             });
                    
-        } 
-        res.status(200).json({
-            message: "Employee updated successfully",
-            employeeId: id
-        }); 
-    }catch(error){
-        res.status(500).json({
-            message: "Failed to update employee",
-            error: error.message
-        });
-    }
-})
+//         } 
+//         res.status(200).json({
+//             message: "Employee updated successfully",
+//             employeeId: id
+//         }); 
+//     }catch(error){
+//         res.status(500).json({
+//             message: "Failed to update employee",
+//             error: error.message
+//         });
+//     }
+// })
 
-app.patch("/employees/:id",async(req,res)=>{
-try{
-    const id=req.params.id
-    const { name, email, gender, department, address, salary }=req.body
-    const fields=[]
-    const values=[]
-    if(name!=undefined){
-        fields.push(`name=?`)
-        values.push(name);
-    }
-    if(email!=undefined){
-        fields.push(`email=?`)
-        values.push(email)
-    }
-    if(gender!=undefined){
-        fields.push(`gender=?`)
-        values.push(gender)
-    }
-    if(department!=undefined){
-        fields.push(`department=?`)
-        values.push(department)
-    }
-    if(address!=undefined){
-        fields.push(`address=?`)
-        values.push(address)
-    }
-    if(salary!=undefined){
-        fields.push(`salary=?`)
-        values.push(salary)
-    }
-     if (fields.length == 0) {
-            return res.status(400).json({
-                message: "No fields provided for update"
-            });
-        }
-     values.push(id);
-     const [result] = await db.query(
-    `UPDATE employees
-     SET ${fields.join(", ")}
-     WHERE id = ?`,
-    values
-);
-      if (result.affectedRows === 0) {
-            return res.status(404).json({
-                message: "Employee not found"
-            });
-        }
-        res.status(200).json({
-            message: "Employee updated successfully",
-            employeeId: id
-        });
+// app.patch("/employees/:id",async(req,res)=>{
+// try{
+//     const id=req.params.id
+//     const { name, email, gender, department, address, salary }=req.body
+//     const fields=[]
+//     const values=[]
+//     if(name!=undefined){
+//         fields.push(`name=?`)
+//         values.push(name);
+//     }
+//     if(email!=undefined){
+//         fields.push(`email=?`)
+//         values.push(email)
+//     }
+//     if(gender!=undefined){
+//         fields.push(`gender=?`)
+//         values.push(gender)
+//     }
+//     if(department!=undefined){
+//         fields.push(`department=?`)
+//         values.push(department)
+//     }
+//     if(address!=undefined){
+//         fields.push(`address=?`)
+//         values.push(address)
+//     }
+//     if(salary!=undefined){
+//         fields.push(`salary=?`)
+//         values.push(salary)
+//     }
+//      if (fields.length == 0) {
+//             return res.status(400).json({
+//                 message: "No fields provided for update"
+//             });
+//         }
+//      values.push(id);
+//      const [result] = await db.query(
+//     `UPDATE employees
+//      SET ${fields.join(", ")}
+//      WHERE id = ?`,
+//     values
+// );
+//       if (result.affectedRows === 0) {
+//             return res.status(404).json({
+//                 message: "Employee not found"
+//             });
+//         }
+//         res.status(200).json({
+//             message: "Employee updated successfully",
+//             employeeId: id
+//         });
 
-}catch(error){
-     res.status(500).json({
-            message: "Failed to update employee",
-            error: error.message
-        });
-}
+// }catch(error){
+//      res.status(500).json({
+//             message: "Failed to update employee",
+//             error: error.message
+//         });
+// }
 
-})
+// })
 
-app.delete("/employees/:id",async(req,res)=>{
-try{
-    const id=req.params.id
-    const[result]=await db.query(`Delete from employees where id =?`,[id])
+// app.delete("/employees/:id",async(req,res)=>{
+// try{
+//     const id=req.params.id
+//     const[result]=await db.query(`Delete from employees where id =?`,[id])
 
-    if (result.affectedRows == 0) {
+//     if (result.affectedRows == 0) {
 
-            return res.status(404).json({
-                message: "Employee not found"
-            });
-        }
-        res.status(200).json({
+//             return res.status(404).json({
+//                 message: "Employee not found"
+//             });
+//         }
+//         res.status(200).json({
 
-            message:"Employee deleted successfully",
-            employeeId:id
-        })
+//             message:"Employee deleted successfully",
+//             employeeId:id
+//         })
 
  
-}catch (error) {
+// }catch (error) {
 
-        res.status(500).json({
-            message: "Failed to delete employee",
-            error: error.message
-        });
-    }
-})
+//         res.status(500).json({
+//             message: "Failed to delete employee",
+//             error: error.message
+//         });
+//     }
+// })
 
-app.listen(port,()=>{
-    console.log(`Server is started at ${port}`)
-})
+// app.listen(port,()=>{
+//     console.log(`Server is started at ${port}`)
+// })
 
 
 
